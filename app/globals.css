@@ -1,26 +1,134 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --pink:          #E85D75;
+  --pink-light:    #FDEEF1;
+  --pink-dark:     #C44560;
+  --warm:          #F7F3F0;
+  --warm-dark:     #EDE6DF;
+  --green:         #6FCF97;
+  --green-light:   #E8F8EF;
+  --green-dark:    #45A36D;
+  --text:          #1F1F1F;
+  --text-sec:      #6B6B6B;
+  --text-tert:     #9E9E9E;
+  --border:        #E5E5E5;
+  --border-strong: #D0D0D0;
+  --error:         #EB5757;
+  --error-bg:      #FDEAEA;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: #fff;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── Background mesh (homepage only) ── */
+.bg-mesh::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% -10%, rgba(232,93,117,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at -10% 80%, rgba(247,243,240,0.9) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 100% 100%, rgba(111,207,151,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-mesh::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Animations ── */
+@keyframes heartbeat {
+  0%   { transform: scale(1); }
+  14%  { transform: scale(1.22); }
+  28%  { transform: scale(1); }
+  42%  { transform: scale(1.14); }
+  56%  { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.7); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.animate-heartbeat  { animation: heartbeat 1.4s ease-in-out infinite; transform-origin: center; display: inline-flex; }
+.animate-pulse-dot  { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--pink); animation: pulse-dot 2s ease infinite; }
+.animate-fade-up-1  { animation: fade-up 0.6s ease both; }
+.animate-fade-up-2  { animation: fade-up 0.6s 0.1s ease both; }
+.animate-fade-up-3  { animation: fade-up 0.6s 0.2s ease both; }
+.animate-fade-up-4  { animation: fade-up 0.6s 0.3s ease both; }
+.animate-fade-up-5  { animation: fade-up 0.6s 0.4s ease both; }
+
+/* ── Waitlist form button: full-width on mobile, compact inline on desktop ── */
+.form-submit-btn {
+  margin: 0 6px 6px;
+}
+@media (min-width: 640px) {
+  .form-submit-btn {
+    margin: 4px;
+    width: auto;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Legal page ── */
+.legal-body h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 48px;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
+.legal-body h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+.legal-body p {
+  font-size: 16px;
+  color: var(--text-sec);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.legal-body ul,
+.legal-body ol {
+  padding-left: 24px;
+  margin-bottom: 16px;
+}
+.legal-body li {
+  font-size: 16px;
+  color: var(--text-sec);
+  line-height: 1.75;
+  margin-bottom: 6px;
+}
+.legal-body a {
+  color: var(--pink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legal-body a:hover { opacity: 0.75; }
