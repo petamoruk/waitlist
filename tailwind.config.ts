@@ -50,6 +50,10 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(16px)" },
           to:   { opacity: "1", transform: "translateY(0)" },
         },
+        "fade-in": {
+          from: { opacity: "0", transform: "scale(0.97) translateY(6px)" },
+          to:   { opacity: "1", transform: "scale(1) translateY(0)" },
+        },
       },
       animation: {
         heartbeat:   "heartbeat 1.4s ease-in-out infinite",
@@ -59,6 +63,7 @@ const config: Config = {
         "fade-up-3": "fade-up 0.6s 0.2s ease both",
         "fade-up-4": "fade-up 0.6s 0.3s ease both",
         "fade-up-5": "fade-up 0.6s 0.4s ease both",
+        "fade-in":   "fade-in 0.4s ease both",
       },
     },
   },

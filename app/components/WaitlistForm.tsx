@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { useWaitlistEmail } from "./WaitlistEmailProvider";
 
 interface WaitlistFormProps {
   id: string;
@@ -16,14 +17,15 @@ export default function WaitlistForm({
   placeholder = "Enter your email address",
   buttonText = "Join waitlist",
   compact = false,
-}: WaitlistFormProps) {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+}: Readonly<WaitlistFormProps>) {
+  const { email, setEmail, isSubscribed, setIsSubscribed } = useWaitlistEmail();
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   async function handleSubmit() {
-    const email = inputRef.current?.value.trim() ?? "";
-    if (!email || !email.includes("@")) {
+    const value = email.trim();
+    if (!value || !value.includes("@")) {
       setErrorMsg("Please enter a valid email address.");
       inputRef.current?.focus();
       setTimeout(() => setErrorMsg(""), 2500);
@@ -34,11 +36,11 @@ export default function WaitlistForm({
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source }),
+        body: JSON.stringify({ email: value, source }),
       });
       const data = await res.json();
       if (res.ok) {
-        setStatus("success");
+        setIsSubscribed(true);
       } else {
         setErrorMsg(data.error ?? "Something went wrong. Let's try that again.");
         setStatus("error");
@@ -51,25 +53,57 @@ export default function WaitlistForm({
     }
   }
 
-  if (status === "success") {
+  /* ── Success: hero variant ── */
+  if (isSubscribed && !compact) {
     return (
       <div
-        className="flex items-center gap-3 px-5 py-4 rounded-2xl border border-[#6FCF97] bg-[#E8F8EF] text-[#2E7D52] font-medium w-full"
-        style={{ maxWidth: compact ? 440 : 480, fontSize: 15 }}
+        className="animate-fade-in w-full"
+        style={{ maxWidth: 480 }}
       >
-        <span
-          className="flex-shrink-0 flex items-center justify-center rounded-full bg-[#6FCF97]"
-          style={{ width: 28, height: 28 }}
+        <div
+          style={{
+            background: "#F7F3F0",
+            border: "1.5px solid #EDE6DF",
+            borderRadius: 20,
+            padding: "32px 36px",
+            boxShadow: "0 4px 32px rgba(232,93,117,0.09), 0 2px 8px rgba(0,0,0,0.05)",
+            textAlign: "center",
+          }}
         >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="2,7 5.5,10.5 12,3" />
-          </svg>
-        </span>
-        You&apos;re on the list! We&apos;ll be in touch soon.
+          <div style={{ fontSize: 34, marginBottom: 14, lineHeight: 1 }}>🐾</div>
+          <div
+            style={{
+              fontSize: 19,
+              fontWeight: 800,
+              color: "#1F1F1F",
+              letterSpacing: "-0.02em",
+              marginBottom: 8,
+            }}
+          >
+            You&apos;re officially on the waitlist.
+          </div>
+          <div style={{ fontSize: 15, color: "#6B6B6B", lineHeight: 1.65 }}>
+            We&apos;ll let you know when early access opens.
+          </div>
+        </div>
       </div>
     );
   }
 
+  /* ── Success: footer variant ── */
+  if (isSubscribed && compact) {
+    return (
+      <div
+        className="animate-fade-in flex items-center gap-2"
+        style={{ maxWidth: 440, fontSize: 14, color: "#9E9E9E" }}
+      >
+        Already subscribed
+        <span style={{ color: "#6FCF97", fontWeight: 700 }}>✓</span>
+      </div>
+    );
+  }
+
+  /* ── Form ── */
   return (
     <div className="w-full" style={{ maxWidth: compact ? 440 : 480 }}>
       <div
@@ -88,6 +122,8 @@ export default function WaitlistForm({
           ref={inputRef}
           id={id}
           type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder={placeholder}
           autoComplete="email"
           disabled={status === "loading"}
