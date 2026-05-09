@@ -4,9 +4,11 @@ import SiteFooter from "./components/SiteFooter";
 import WaitlistForm from "./components/WaitlistForm";
 import FeatureCards from "./components/FeatureCards";
 import PetChips from "./components/PetChips";
+import { WaitlistEmailProvider } from "./components/WaitlistEmailProvider";
 
 export default function Home() {
   return (
+    <WaitlistEmailProvider>
     <div className="bg-mesh relative">
       <div className="relative z-[1]">
 
@@ -213,5 +215,6 @@ export default function Home() {
         <SiteFooter />
       </div>
     </div>
+    </WaitlistEmailProvider>
   );
 }
