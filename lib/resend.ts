@@ -11,7 +11,7 @@ function getResend(): Resend {
     return _resend;
 }
 
-export async function sendWaitlistConfirmation(email: string): Promise<void> {
+export async function sendWaitlistConfirmation(email: string, petType = "pet"): Promise<void> {
     const from = process.env.RESEND_FROM_EMAIL;
     if (!from) throw new Error("Missing required env var: RESEND_FROM_EMAIL");
 
@@ -36,7 +36,7 @@ export async function sendWaitlistConfirmation(email: string): Promise<void> {
             Thanks for signing up — you'll hear from us as soon as Pet Amor launches in the UK. We'll be in touch with early access details before anyone else.
           </p>
           <p style="margin:0;font-size:14px;color:#9e9e9e;line-height:1.5">
-            In the meantime, sit tight — and give your pet an extra cuddle from us. 🐾
+            In the meantime, sit tight — and give your ${petType} an extra cuddle from us. 🐾
           </p>
         </td></tr>
         <tr><td style="padding:0 40px 40px;border-top:1px solid #ede6df">

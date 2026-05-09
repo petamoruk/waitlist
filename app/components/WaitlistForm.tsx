@@ -18,7 +18,12 @@ export default function WaitlistForm({
   buttonText = "Join waitlist",
   compact = false,
 }: Readonly<WaitlistFormProps>) {
-  const { email, setEmail, isSubscribed, setIsSubscribed } = useWaitlistEmail();
+  const { email, setEmail, isSubscribed, setIsSubscribed, selectedPet } = useWaitlistEmail();
+
+  function getPetType(): string {
+    if (!selectedPet || selectedPet === "Other") return "pet";
+    return selectedPet.split(" ").at(-1)!.toLowerCase();
+  }
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -36,7 +41,7 @@ export default function WaitlistForm({
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: value, source }),
+        body: JSON.stringify({ email: value, source, petType: getPetType() }),
       });
       const data = await res.json();
       if (res.ok) {

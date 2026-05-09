@@ -39,10 +39,14 @@ export async function POST(req: NextRequest) {
 
   let email: string;
   let source: string | null = null;
+  let petType = "pet";
   try {
     const body = await req.json();
     email = (body.email ?? "").trim().toLowerCase().slice(0, 254);
     source = typeof body.source === "string" ? body.source.trim().slice(0, 64) || null : null;
+    if (typeof body.petType === "string" && /^[a-z]{1,32}$/.test(body.petType)) {
+      petType = body.petType;
+    }
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
@@ -69,7 +73,7 @@ export async function POST(req: NextRequest) {
   /* Send confirmation email — failure must not fail the request */
   let emailSent = false;
   try {
-    await sendWaitlistConfirmation(email);
+    await sendWaitlistConfirmation(email, petType);
     emailSent = true;
   } catch (err) {
     console.error("Resend error:", err);
