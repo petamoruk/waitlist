@@ -4,7 +4,7 @@ import Nav from "../components/Nav";
 import SiteFooter from "../components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy — Pet Amor",
+  title: "Cookie Policy | Pet Amor",
   description: "How Pet Amor uses cookies and how you can manage them.",
 };
 
@@ -33,7 +33,7 @@ export default function CookiesPage() {
             <span className="inline-block text-[11px] font-bold tracking-[0.1em] uppercase text-[#E85D75] mb-1.5 mt-12">Section 1</span>
             <h2>What are cookies?</h2>
             <p>Cookies are small text files that are stored on your device when you visit a website. They are widely used to make websites work properly, improve performance, and provide information to website owners.</p>
-            <p>Similar technologies — such as local storage, session storage, and pixels — work in a comparable way and are also covered by this policy.</p>
+            <p>Similar technologies (such as local storage, session storage, and pixels) work in a comparable way and are also covered by this policy.</p>
 
             <span className="inline-block text-[11px] font-bold tracking-[0.1em] uppercase text-[#E85D75] mb-1.5 mt-12">Section 2</span>
             <h2>How we use cookies</h2>
@@ -42,23 +42,23 @@ export default function CookiesPage() {
             <h3>Strictly necessary cookies</h3>
             <p>These cookies are essential for the website to function. They enable core features such as account authentication, security, and maintaining your session. You cannot opt out of these cookies.</p>
             <ul>
-              <li><strong>Session token</strong> — keeps you logged in during a visit</li>
-              <li><strong>CSRF token</strong> — protects against cross-site request forgery</li>
-              <li><strong>Cookie consent</strong> — stores your cookie preferences</li>
+              <li><strong>Session token:</strong> keeps you logged in during a visit</li>
+              <li><strong>CSRF token:</strong> protects against cross-site request forgery</li>
+              <li><strong>Cookie consent:</strong> stores your cookie preferences</li>
             </ul>
 
             <h3>Analytics cookies</h3>
             <p>These help us understand how visitors use our site so we can improve it. The information collected is aggregated and anonymous.</p>
             <ul>
-              <li><strong>Usage analytics</strong> — pages visited, time on site, navigation paths</li>
-              <li><strong>Performance monitoring</strong> — load times, error rates</li>
+              <li><strong>Usage analytics:</strong> pages visited, time on site, navigation paths</li>
+              <li><strong>Performance monitoring:</strong> load times, error rates</li>
             </ul>
 
             <h3>Functional cookies</h3>
             <p>These cookies remember your preferences to improve your experience.</p>
             <ul>
-              <li><strong>Language preference</strong> — stores your preferred language</li>
-              <li><strong>Theme preference</strong> — light or dark mode, if applicable</li>
+              <li><strong>Language preference:</strong> stores your preferred language</li>
+              <li><strong>Theme preference:</strong> light or dark mode, if applicable</li>
             </ul>
 
             <h3>Marketing cookies</h3>
@@ -68,14 +68,14 @@ export default function CookiesPage() {
             <h2>Third-party cookies</h2>
             <p>Some cookies are set by third-party services that appear on our pages. These include:</p>
             <ul>
-              <li><strong>Analytics providers</strong> — to help us measure usage</li>
-              <li><strong>Payment processors</strong> — during checkout flows</li>
+              <li><strong>Analytics providers:</strong> to help us measure usage</li>
+              <li><strong>Payment processors:</strong> during checkout flows</li>
             </ul>
             <p>We do not have direct control over third-party cookies. Please refer to the relevant third party&apos;s privacy and cookie policies for more information.</p>
 
             <span className="inline-block text-[11px] font-bold tracking-[0.1em] uppercase text-[#E85D75] mb-1.5 mt-12">Section 4</span>
             <h2>How long do cookies last?</h2>
-            <p>Cookies can be either session cookies (deleted when you close your browser) or persistent cookies (remain on your device for a set period). The specific duration of each cookie depends on its purpose — session cookies expire at the end of your browsing session, while persistent cookies may last anywhere from a few days to two years.</p>
+            <p>Cookies can be either session cookies (deleted when you close your browser) or persistent cookies (remain on your device for a set period). The specific duration depends on the cookie&apos;s purpose. Session cookies expire when you close your browser, while persistent cookies may last anywhere from a few days to two years.</p>
 
             <span className="inline-block text-[11px] font-bold tracking-[0.1em] uppercase text-[#E85D75] mb-1.5 mt-12">Section 5</span>
             <h2>Managing your cookie preferences</h2>

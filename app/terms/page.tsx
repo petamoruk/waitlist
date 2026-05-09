@@ -4,7 +4,7 @@ import Nav from "../components/Nav";
 import SiteFooter from "../components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — Pet Amor",
+  title: "Terms & Conditions | Pet Amor",
   description: "The terms and conditions governing your use of Pet Amor.",
 };
 
@@ -81,7 +81,7 @@ const sections = [
     num: "7",
     title: "Intellectual property",
     content: (
-      <p>All content, features, and functionality of Pet Amor — including text, graphics, logos, and software — are owned by Pet Amor Ltd and protected by UK and international intellectual property laws. You may not copy, distribute, or create derivative works without our written consent.</p>
+      <p>All content, features, and functionality of Pet Amor (including text, graphics, logos, and software) are owned by Pet Amor Ltd and protected by UK and international intellectual property laws. You may not copy, distribute, or create derivative works without our written consent.</p>
     ),
   },
   {

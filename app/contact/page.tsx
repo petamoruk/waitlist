@@ -4,7 +4,7 @@ import SiteFooter from "../components/SiteFooter";
 import ContactForm from "../components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact — Pet Amor",
+  title: "Contact | Pet Amor",
   description: "Get in touch with the Pet Amor team for questions, feedback, or partnership enquiries.",
 };
 
@@ -25,7 +25,7 @@ export default function ContactPage() {
               Contact us
             </h1>
             <p className="text-[18px] text-[#6B6B6B] leading-relaxed" style={{ maxWidth: 480 }}>
-              We&apos;d love to hear from you. Questions, feedback, or partnership enquiries — we&apos;re here.
+              We&apos;d love to hear from you. Questions, feedback, or partnership enquiries. We&apos;re here.
             </p>
           </div>
 
@@ -57,7 +57,7 @@ export default function ContactPage() {
               <div className="flex flex-col gap-2">
                 <span className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#9E9E9E]">What we can help with</span>
                 <p className="text-[15px] text-[#6B6B6B] leading-relaxed">
-                  Whether you have a <strong className="text-[#1F1F1F]">question about the waitlist</strong>, want to share <strong className="text-[#1F1F1F]">feedback on the product</strong>, or are interested in a <strong className="text-[#1F1F1F]">partnership or press enquiry</strong> — we&apos;d love to hear from you.
+                  Whether you have a <strong className="text-[#1F1F1F]">question about the waitlist</strong>, want to share <strong className="text-[#1F1F1F]">feedback on the product</strong>, or are interested in a <strong className="text-[#1F1F1F]">partnership or press enquiry</strong>, we&apos;d love to hear from you.
                 </p>
                 <p className="text-[15px] text-[#6B6B6B] leading-relaxed">For urgent pet health concerns, please contact a vet directly.</p>
               </div>
