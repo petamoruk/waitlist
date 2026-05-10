@@ -2,6 +2,7 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useRef } from "react";
+import Link from "next/link";
 import Nav from "../components/Nav";
 import SiteFooter from "../components/SiteFooter";
 
@@ -148,10 +149,10 @@ export default function UnsubscribeClient() {
                       className="text-2xl sm:text-[30px]"
                       style={{ fontWeight: 800, letterSpacing: "-0.025em", lineHeight: 1.15, color: C.text, marginBottom: 12 }}
                     >
-                      We're sorry to see you <span style={{ color: C.pink }}>go.</span>
+                      We&apos;re sorry to see you <span style={{ color: C.pink }}>go.</span>
                     </h1>
                     <p style={{ fontSize: 16, color: C.textSec, lineHeight: 1.6 }}>
-                      Confirm below and we'll stop sending waitlist updates. No more emails, that's a promise.
+                      Confirm below and we&apos;ll stop sending waitlist updates. No more emails, that&apos;s a promise.
                     </p>
 
                     {/* Email pill */}
@@ -204,7 +205,7 @@ export default function UnsubscribeClient() {
                           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </div>
                         <div style={{ fontSize: 14, color: C.text, lineHeight: 1.55 }}>
-                          <strong>Done, you're now on monthly only.</strong><br />
+                          <strong>Done, you&apos;re now on monthly only.</strong><br />
                           One short email a month, just the highlights.{" "}
                           <button onClick={() => router.push("/")} style={{ color: "#2E7D52", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 3, border: "none", background: "transparent", cursor: "pointer", fontFamily: "inherit", fontSize: 14 }}>
                             Back to home
@@ -216,7 +217,7 @@ export default function UnsubscribeClient() {
                     {/* Reason picker */}
                     <fieldset style={{ border: "none", padding: 0, margin: "0 0 24px" }}>
                       <legend style={{ fontSize: 13, fontWeight: 600, color: C.text, marginBottom: 12, display: "block" }}>
-                        A quick reason, if you'd like to share
+                        A quick reason, if you&apos;d like to share
                         <span style={{ fontWeight: 400, color: C.textTert, marginLeft: 6 }}>optional</span>
                       </legend>
                       <div style={{ display: "grid", gap: 8 }} role="radiogroup" aria-label="Reason for unsubscribing">
@@ -316,10 +317,10 @@ export default function UnsubscribeClient() {
                     <CheckIcon />
                   </div>
                   <h2 style={{ fontSize: 26, fontWeight: 800, letterSpacing: "-0.02em", color: C.text, marginBottom: 10, lineHeight: 1.2 }}>
-                    You've been unsubscribed
+                    You&apos;ve been unsubscribed
                   </h2>
                   <p style={{ fontSize: 15, color: C.textSec, lineHeight: 1.6, maxWidth: 380, marginBottom: 28 }}>
-                    We won't send any more waitlist emails to <strong style={{ color: C.text, fontWeight: 600 }}>{email}</strong>. Thank you for the time you spent with us.
+                    We won&apos;t send any more waitlist emails to <strong style={{ color: C.text, fontWeight: 600 }}>{email}</strong>. Thank you for the time you spent with us.
                   </p>
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
                     <button
@@ -336,7 +337,7 @@ export default function UnsubscribeClient() {
                     </button>
                   </div>
                   <p style={{ marginTop: 28, fontSize: 13, color: C.textTert }}>
-                    <a href="/" style={{ color: C.textSec, textDecoration: "underline", textUnderlineOffset: 3, fontWeight: 500 }}>Back to petamor.co.uk</a>
+                    <Link href="/" style={{ color: C.textSec, textDecoration: "underline", textUnderlineOffset: 3, fontWeight: 500 }}>Back to petamor.co.uk</Link>
                   </p>
                 </div>
               )}
@@ -351,17 +352,17 @@ export default function UnsubscribeClient() {
                   aria-live="polite"
                 >
                   <div style={{ width: 72, height: 72, borderRadius: "50%", background: C.pinkLight, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24, position: "relative" }} aria-hidden="true">
-                    <div style={{ position: "absolute", inset: -6, borderRadius: "50%", border: `2px solid ${C.pink}`, opacity: 0.20 }} />
+                    <div style={{ position: "absolute", inset: -6, borderRadius: "50%", border: `2px solid ${C.pink}`, opacity: 0.2 }} />
                     <HeartIcon />
                   </div>
                   <h2 style={{ fontSize: 26, fontWeight: 800, letterSpacing: "-0.02em", color: C.text, marginBottom: 10 }}>
                     Welcome <span style={{ color: C.pink }}>back.</span>
                   </h2>
                   <p style={{ fontSize: 15, color: C.textSec, lineHeight: 1.6, maxWidth: 380 }}>
-                    You're back on the waitlist. We'll be in touch with launch news and the occasional pet-care tip.
+                    You&apos;re back on the waitlist. We&apos;ll be in touch with launch news and the occasional pet-care tip.
                   </p>
                   <p style={{ marginTop: 28, fontSize: 13, color: C.textTert }}>
-                    <a href="/" style={{ color: C.textSec, textDecoration: "underline", textUnderlineOffset: 3, fontWeight: 500 }}>Back to petamor.co.uk</a>
+                    <Link href="/" style={{ color: C.textSec, textDecoration: "underline", textUnderlineOffset: 3, fontWeight: 500 }}>Back to petamor.co.uk</Link>
                   </p>
                 </div>
               )}
