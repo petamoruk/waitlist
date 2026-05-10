@@ -15,9 +15,12 @@ export async function sendWaitlistConfirmation(email: string, petType = "pet", u
     const from = process.env.RESEND_FROM_EMAIL;
     if (!from) throw new Error("Missing required env var: RESEND_FROM_EMAIL");
 
+    const siteUrl = (process.env.SITE_URL ?? "").replace(/\/$/, "");
+    if (!siteUrl) throw new Error("Missing required env var: SITE_URL");
+
     const unsubscribeUrl = unsubscribeToken
-        ? `https://petamor.co.uk/unsubscribe?token=${unsubscribeToken}&email=${encodeURIComponent(email)}`
-        : `https://petamor.co.uk/unsubscribe?email=${encodeURIComponent(email)}`;
+        ? `${siteUrl}/unsubscribe?token=${unsubscribeToken}&email=${encodeURIComponent(email)}`
+        : `${siteUrl}/unsubscribe?email=${encodeURIComponent(email)}`;
 
     const { error } = await getResend().emails.send(
         {
@@ -61,7 +64,7 @@ export async function sendWaitlistConfirmation(email: string, petType = "pet", u
             <td style="padding:0 40px 40px;border-top:1px solid #ede6df">
               <p style="margin:24px 0 0;font-size:12px;color:#9e9e9e">
                 You're receiving this because you signed up at
-                <a href="https://petamor.co.uk" style="color:#e85d75;text-decoration:none">
+                <a href="${siteUrl}" style="color:#e85d75;text-decoration:none">
                   petamor.co.uk
                 </a>.
                 If this wasn't you, or you'd like to stop receiving emails,
