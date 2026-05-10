@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
+import { submitContact } from "@/lib/api/contact";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -23,17 +24,13 @@ export default function ContactForm() {
     setEmailError(false);
     setStatus("loading");
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name:    nameRef.current?.value.trim(),
-          email,
-          subject: subjectRef.current?.value,
-          message: msgRef.current?.value.trim(),
-        }),
+      const ok = await submitContact({
+        name:    nameRef.current?.value.trim(),
+        email,
+        subject: subjectRef.current?.value,
+        message: msgRef.current?.value.trim(),
       });
-      setStatus(res.ok ? "success" : "error");
+      setStatus(ok ? "success" : "error");
     } catch {
       setStatus("error");
     }
@@ -121,10 +118,8 @@ export default function ContactForm() {
         <button
           onClick={handleSubmit}
           disabled={status === "loading"}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-[10px] bg-[#E85D75] text-white text-[15px] font-semibold cursor-pointer transition-all duration-150 disabled:opacity-70 active:scale-[0.97]"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-[10px] bg-[#E85D75] hover:brightness-[0.93] text-white text-[15px] font-semibold cursor-pointer transition-all duration-150 disabled:opacity-70 active:scale-[0.97]"
           style={{ fontFamily: "inherit" }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.filter = "brightness(0.93)"; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.filter = ""; }}
         >
           {status === "loading" ? "Sending…" : "Send message"}
         </button>
