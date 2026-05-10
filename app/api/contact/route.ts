@@ -18,15 +18,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Please enter a valid email address." }, { status: 422 });
   }
 
+  const name    = (body.name    ?? "").trim().slice(0, 100) || null;
+  const subject = (body.subject ?? "").trim().slice(0, 200) || null;
+  const message = (body.message ?? "").trim().slice(0, 5000) || null;
+
   try {
     await getSupabase()
       .from("contact_messages")
-      .insert({
-        name:    (body.name ?? "").trim() || null,
-        email,
-        subject: body.subject || null,
-        message: (body.message ?? "").trim() || null,
-      });
+      .insert({ name, email, subject, message });
   } catch (err) {
     console.error("Contact form DB error:", err);
     return NextResponse.json(
