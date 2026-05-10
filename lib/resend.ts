@@ -11,9 +11,13 @@ function getResend(): Resend {
     return _resend;
 }
 
-export async function sendWaitlistConfirmation(email: string, petType = "pet"): Promise<void> {
+export async function sendWaitlistConfirmation(email: string, petType = "pet", unsubscribeToken?: string): Promise<void> {
     const from = process.env.RESEND_FROM_EMAIL;
     if (!from) throw new Error("Missing required env var: RESEND_FROM_EMAIL");
+
+    const unsubscribeUrl = unsubscribeToken
+        ? `https://petamor.co.uk/unsubscribe?token=${unsubscribeToken}&email=${encodeURIComponent(email)}`
+        : `https://petamor.co.uk/unsubscribe?email=${encodeURIComponent(email)}`;
 
     const { error } = await getResend().emails.send(
         {
@@ -28,7 +32,7 @@ export async function sendWaitlistConfirmation(email: string, petType = "pet"): 
     <tr>
       <td style="text-align:center">
         <table style="width:100%;max-width:480px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.06);border-spacing:0">
-          
+
           <tr>
             <td style="background:#e85d75;padding:32px 40px;text-align:center">
               <span style="font-size:28px;font-weight:900;color:#ffffff;letter-spacing:-0.03em">
@@ -56,11 +60,14 @@ export async function sendWaitlistConfirmation(email: string, petType = "pet"): 
           <tr>
             <td style="padding:0 40px 40px;border-top:1px solid #ede6df">
               <p style="margin:24px 0 0;font-size:12px;color:#9e9e9e">
-                You're receiving this because you signed up at 
+                You're receiving this because you signed up at
                 <a href="https://petamor.co.uk" style="color:#e85d75;text-decoration:none">
                   petamor.co.uk
                 </a>.
-                If this wasn't you, you can safely ignore this email.
+                If this wasn't you, or you'd like to stop receiving emails,
+                <a href="${unsubscribeUrl}" style="color:#9e9e9e;text-decoration:underline">
+                  unsubscribe here
+                </a>.
               </p>
             </td>
           </tr>
@@ -73,7 +80,8 @@ export async function sendWaitlistConfirmation(email: string, petType = "pet"): 
 </html>`,
             tags: [{ name: "category", value: "waitlist" }],
             headers: {
-                "List-Unsubscribe": "<mailto:hello@petamor.co.uk?subject=unsubscribe>",
+                "List-Unsubscribe": `<${unsubscribeUrl}>, <mailto:hello@petamor.co.uk?subject=unsubscribe>`,
+                "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
             },
         },
         { idempotencyKey: `waitlist-confirmation/${email}` }
