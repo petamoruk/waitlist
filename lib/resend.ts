@@ -31,46 +31,40 @@ export async function sendWaitlistConfirmation(email: string, petType = "pet", u
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;padding:0;background:#f7f3f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
-  <table style="width:100%;background:#f7f3f0;padding:40px 16px;border-spacing:0">
+  <table role="presentation" width="100%" style="width:100%;background:#f7f3f0;border-spacing:0;border-collapse:collapse">
     <tr>
-      <td style="text-align:center">
-        <table style="width:100%;max-width:480px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.06);border-spacing:0">
+      <td align="center" style="padding:40px 16px">
+        <table role="presentation" align="center" width="480" style="width:100%;max-width:480px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.06);border-spacing:0;border-collapse:collapse">
 
           <tr>
-            <td style="background:#e85d75;padding:32px 40px;text-align:center">
-              <span style="font-size:28px;font-weight:900;color:#ffffff;letter-spacing:-0.03em">
-                Pet Amor
-              </span>
+            <td align="center" style="background:#e85d75;padding:32px 40px;text-align:center">
+              <span style="font-size:28px;font-weight:900;color:#ffffff;letter-spacing:-0.03em">Pet Amor</span>
             </td>
           </tr>
 
           <tr>
             <td style="padding:40px 40px 32px">
               <p style="margin:0 0 16px;font-size:22px;font-weight:800;color:#1f1f1f;letter-spacing:-0.02em">
-                You're on the list! 🎉
+                You&apos;re on the list! &#127881;
               </p>
 
               <p style="margin:0 0 24px;font-size:16px;color:#6b6b6b;line-height:1.6">
-                Thanks for signing up. You'll hear from us as soon as Pet Amor launches in the UK, with early access details before anyone else.
+                Thanks for signing up. You&apos;ll hear from us as soon as Pet Amor launches in the UK, with early access details before anyone else.
               </p>
 
               <p style="margin:0;font-size:14px;color:#9e9e9e;line-height:1.5">
-                In the meantime, give your ${petType} an extra cuddle from us. 🐾
+                In the meantime, give your ${petType} an extra cuddle from us. &#128062;
               </p>
             </td>
           </tr>
 
           <tr>
             <td style="padding:0 40px 40px;border-top:1px solid #ede6df">
-              <p style="margin:24px 0 0;font-size:12px;color:#9e9e9e">
-                You're receiving this because you signed up at
-                <a href="${siteUrl}" style="color:#e85d75;text-decoration:none">
-                  petamor.co.uk
-                </a>.
-                If this wasn't you, or you'd like to stop receiving emails,
-                <a href="${unsubscribeUrl}" style="color:#9e9e9e;text-decoration:underline">
-                  unsubscribe here
-                </a>.
+              <p style="margin:24px 0 0;font-size:12px;color:#9e9e9e;line-height:1.6">
+                You&apos;re receiving this because you signed up at
+                <a href="${siteUrl}" style="color:#e85d75;text-decoration:none">petamor.co.uk</a>.
+                If this wasn&apos;t you, or you&apos;d like to stop receiving emails,
+                <a href="${unsubscribeUrl}" style="color:#9e9e9e;text-decoration:underline">unsubscribe here</a>.
               </p>
             </td>
           </tr>
