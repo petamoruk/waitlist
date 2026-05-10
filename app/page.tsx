@@ -4,9 +4,11 @@ import SiteFooter from "./components/SiteFooter";
 import WaitlistForm from "./components/WaitlistForm";
 import FeatureCards from "./components/FeatureCards";
 import PetChips from "./components/PetChips";
+import { WaitlistEmailProvider } from "./components/WaitlistEmailProvider";
 
 export default function Home() {
   return (
+    <WaitlistEmailProvider>
     <div className="bg-mesh relative">
       <div className="relative z-[1]">
 
@@ -34,7 +36,7 @@ export default function Home() {
             className="text-[#6B6B6B] leading-relaxed mb-12 animate-fade-up-3"
             style={{ fontSize: "clamp(17px, 2vw, 20px)", maxWidth: 520 }}
           >
-            Track care, get vet advice, and understand your pet like never before. Pet Amor is coming to the UK — be the first to know.
+            Track care, get vet advice, and understand your pet like never before. Pet Amor is coming to the UK. Be the first to know.
           </p>
 
           <div className="animate-fade-up-4 w-full flex flex-col items-center gap-3">
@@ -101,7 +103,7 @@ export default function Home() {
                 {
                   n: "1",
                   title: "Add your pet",
-                  desc: "Create a profile for each of your pets. Breed, age, medical history — everything in one place.",
+                  desc: "Create a profile for each of your pets. Breed, age, medical history, all in one place.",
                 },
                 {
                   n: "2",
@@ -213,5 +215,6 @@ export default function Home() {
         <SiteFooter />
       </div>
     </div>
+    </WaitlistEmailProvider>
   );
 }

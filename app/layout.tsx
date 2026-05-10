@@ -9,11 +9,12 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Pet Amor — Join the waitlist",
+  title: "Pet Amor | Join the Waitlist",
+  icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }] },
   description:
-    "Pet Amor is the all-in-one platform for UK pet owners — vet care, daily tracking, AI advice, and more. Be the first to know when we launch.",
+    "Pet Amor is the all-in-one platform for UK pet owners. Vet care, daily tracking, AI advice, and more. Be the first to know when we launch.",
   openGraph: {
-    title: "Pet Amor — Join the waitlist",
+    title: "Pet Amor | Join the Waitlist",
     description:
       "Everything your pet needs, in one place. Join 2,400+ UK pet owners on the waitlist.",
     type: "website",

@@ -39,10 +39,14 @@ export async function POST(req: NextRequest) {
 
   let email: string;
   let source: string | null = null;
+  let petType = "pet";
   try {
     const body = await req.json();
     email = (body.email ?? "").trim().toLowerCase().slice(0, 254);
     source = typeof body.source === "string" ? body.source.trim().slice(0, 64) || null : null;
+    if (typeof body.petType === "string" && /^[a-z]{1,32}$/.test(body.petType)) {
+      petType = body.petType;
+    }
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
@@ -51,12 +55,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Please enter a valid email address." }, { status: 422 });
   }
 
-  const { error: dbError } = await getSupabase()
+  const { data: insertedRow, error: dbError } = await getSupabase()
     .from("waitlist")
-    .insert({ email, source, ip });
+    .insert({ email, source, ip })
+    .select("unsubscribe_token")
+    .single();
 
   if (dbError) {
     if (dbError.code === "23505") {
+      /* Row exists — reactivate in case they previously unsubscribed */
+      await getSupabase()
+        .from("waitlist")
+        .update({ is_subscribed: true, unsubscribe_reason: null })
+        .eq("email", email);
       return NextResponse.json({ ok: true, alreadyJoined: true }, { status: 200 });
     }
     console.error("Supabase error:", dbError);
@@ -66,10 +77,12 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const unsubscribeToken: string | undefined = insertedRow?.unsubscribe_token;
+
   /* Send confirmation email — failure must not fail the request */
   let emailSent = false;
   try {
-    await sendWaitlistConfirmation(email);
+    await sendWaitlistConfirmation(email, petType, unsubscribeToken);
     emailSent = true;
   } catch (err) {
     console.error("Resend error:", err);

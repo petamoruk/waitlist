@@ -4,7 +4,7 @@ import Nav from "../components/Nav";
 import SiteFooter from "../components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Pet Amor",
+  title: "Privacy Policy | Pet Amor",
   description: "How Pet Amor collects, uses, and protects your personal data.",
 };
 
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
               <li>Your name and email address when you join our waitlist or create an account</li>
               <li>Information about your pets (name, species, breed, age, health records)</li>
               <li>Messages you send via our contact form</li>
-              <li>Payment information (handled securely by our payment processor — we do not store full card details)</li>
+              <li>Payment information (handled securely by our payment processor; we do not store full card details)</li>
             </ul>
             <h3>Data collected automatically</h3>
             <ul>
@@ -57,11 +57,11 @@ export default function PrivacyPage() {
             <h2>Why we use your data</h2>
             <p>We use your data for the following purposes and legal bases:</p>
             <ul>
-              <li><strong>Providing our service</strong> — to create and manage your account, and deliver the features you use. Legal basis: contract performance.</li>
-              <li><strong>Waitlist communications</strong> — to keep you informed about our launch and early access. Legal basis: legitimate interests / consent.</li>
-              <li><strong>Improving our product</strong> — to understand how people use Pet Amor and make it better. Legal basis: legitimate interests.</li>
-              <li><strong>Customer support</strong> — to respond to your questions and resolve issues. Legal basis: contract performance and legitimate interests.</li>
-              <li><strong>Legal compliance</strong> — to meet our obligations under UK law. Legal basis: legal obligation.</li>
+              <li><strong>Providing our service:</strong> to create and manage your account, and deliver the features you use. Legal basis: contract performance.</li>
+              <li><strong>Waitlist communications:</strong> to keep you informed about our launch and early access. Legal basis: legitimate interests / consent.</li>
+              <li><strong>Improving our product:</strong> to understand how people use Pet Amor and make it better. Legal basis: legitimate interests.</li>
+              <li><strong>Customer support:</strong> to respond to your questions and resolve issues. Legal basis: contract performance and legitimate interests.</li>
+              <li><strong>Legal compliance:</strong> to meet our obligations under UK law. Legal basis: legal obligation.</li>
             </ul>
 
             <span className="inline-block text-[11px] font-bold tracking-[0.1em] uppercase text-[#E85D75] mb-1.5 mt-12">Section 4</span>
@@ -72,9 +72,9 @@ export default function PrivacyPage() {
             <h2>Who we share your data with</h2>
             <p>We do not sell your personal data. We may share data with:</p>
             <ul>
-              <li><strong>Service providers</strong> — trusted third parties who help us deliver our service (e.g. hosting, analytics, email delivery). They are bound by data processing agreements.</li>
-              <li><strong>Veterinary professionals</strong> — only when you initiate a consultation, and with your consent.</li>
-              <li><strong>Legal authorities</strong> — where required by law or to protect our rights.</li>
+              <li><strong>Service providers:</strong> trusted third parties who help us deliver our service (e.g. hosting, analytics, email delivery). They are bound by data processing agreements.</li>
+              <li><strong>Veterinary professionals:</strong> only when you initiate a consultation, and with your consent.</li>
+              <li><strong>Legal authorities:</strong> where required by law or to protect our rights.</li>
             </ul>
             <p>All data transfers outside the UK comply with UK GDPR transfer requirements.</p>
 
@@ -82,13 +82,13 @@ export default function PrivacyPage() {
             <h2>Your rights</h2>
             <p>Under UK GDPR, you have the right to:</p>
             <ul>
-              <li><strong>Access</strong> — request a copy of the data we hold about you</li>
-              <li><strong>Rectification</strong> — ask us to correct inaccurate data</li>
-              <li><strong>Erasure</strong> — request that we delete your data in certain circumstances</li>
-              <li><strong>Restriction</strong> — ask us to limit how we process your data</li>
-              <li><strong>Portability</strong> — receive your data in a structured, machine-readable format</li>
-              <li><strong>Object</strong> — object to processing based on legitimate interests</li>
-              <li><strong>Withdraw consent</strong> — where we rely on consent, you may withdraw it at any time</li>
+              <li><strong>Access:</strong> request a copy of the data we hold about you</li>
+              <li><strong>Rectification:</strong> ask us to correct inaccurate data</li>
+              <li><strong>Erasure:</strong> request that we delete your data in certain circumstances</li>
+              <li><strong>Restriction:</strong> ask us to limit how we process your data</li>
+              <li><strong>Portability:</strong> receive your data in a structured, machine-readable format</li>
+              <li><strong>Object:</strong> object to processing based on legitimate interests</li>
+              <li><strong>Withdraw consent:</strong> where we rely on consent, you may withdraw it at any time</li>
             </ul>
             <p>To exercise any of these rights, contact us at <a href="mailto:contact@petamor.co.uk">contact@petamor.co.uk</a>. We will respond within 30 days.</p>
             <p>You also have the right to lodge a complaint with the Information Commissioner&apos;s Office (ICO) at <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>.</p>

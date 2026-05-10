@@ -65,7 +65,7 @@ const features = [
   },
   {
     title: "Pet sitter handover",
-    desc: "Share a complete care guide with your sitter — routines, contacts, and emergency info.",
+    desc: "Share a complete care guide with your sitter: routines, contacts and emergency info.",
     iconBg: "#E8F7FD",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A8FB5" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -79,7 +79,7 @@ const features = [
   },
   {
     title: "Insurance marketplace",
-    desc: "Compare and connect with leading UK pet insurance providers — all in one place.",
+    desc: "Compare and connect with leading UK pet insurance providers, all in one place.",
     iconBg: "#E8F8EF",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#45A36D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
