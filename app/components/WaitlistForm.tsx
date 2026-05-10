@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useWaitlistEmail } from "./WaitlistEmailProvider";
+import { submitWaitlist } from "@/lib/api/waitlist";
 
 interface WaitlistFormProps {
   id: string;
@@ -38,13 +39,8 @@ export default function WaitlistForm({
     }
     setStatus("loading");
     try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: value, source, petType: getPetType() }),
-      });
-      const data = await res.json();
-      if (res.ok) {
+      const { ok, data } = await submitWaitlist(value, source, getPetType());
+      if (ok) {
         setIsSubscribed(true);
       } else {
         setErrorMsg(data.error ?? "Something went wrong. Let's try that again.");
@@ -139,16 +135,13 @@ export default function WaitlistForm({
         <button
           onClick={handleSubmit}
           disabled={status === "loading"}
-          className="form-submit-btn font-bold text-white transition-all duration-150 active:scale-95 disabled:opacity-70 cursor-pointer whitespace-nowrap"
+          className="form-submit-btn font-bold text-white transition-all duration-150 active:scale-95 disabled:opacity-70 cursor-pointer whitespace-nowrap bg-[#E85D75] hover:bg-[#C44560]"
           style={{
-            background: "#E85D75",
             fontFamily: "inherit",
             fontSize: 15,
             padding: "13px 24px",
             borderRadius: 10,
           }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#C44560"; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "#E85D75"; }}
         >
           {status === "loading" ? "Joining…" : buttonText}
         </button>

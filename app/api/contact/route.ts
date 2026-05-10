@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase";
-
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+import { isValidEmail } from "@/lib/validation";
 
 export async function POST(req: NextRequest) {
   let body: { name?: string; email?: string; subject?: string; message?: string };

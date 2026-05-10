@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import Nav from "../components/Nav";
 import SiteFooter from "../components/SiteFooter";
+import { submitUnsubscribe, submitResubscribe } from "@/lib/api/unsubscribe";
 
 type UiState = "form" | "unsubscribed" | "resubscribed";
 
@@ -88,11 +89,7 @@ export default function UnsubscribeClient() {
     setSubmitting(true);
     const reason = selectedReason === "other" ? otherText : selectedReason;
     try {
-      await fetch("/api/unsubscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(token ? { token, reason } : { email, reason }),
-      });
+      await submitUnsubscribe(token ? { token, reason } : { email, reason });
     } catch { /* silent — show success either way */ }
     setSubmitting(false);
     setUiState("unsubscribed");
@@ -102,11 +99,7 @@ export default function UnsubscribeClient() {
 
   async function handleResubscribe() {
     try {
-      await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "resubscribe" }),
-      });
+      await submitResubscribe(email);
     } catch { /* silent */ }
     setUiState("resubscribed");
     setTimeout(() => resubRef.current?.focus(), 80);

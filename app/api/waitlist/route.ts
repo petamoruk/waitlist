@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase";
 import { sendWaitlistConfirmation } from "@/lib/resend";
-
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+import { isValidEmail } from "@/lib/validation";
 
 // Simple in-memory rate limiter: max 5 requests per IP per 60 seconds.
 // Note: resets per serverless instance — protects against bursts, not distributed floods.
